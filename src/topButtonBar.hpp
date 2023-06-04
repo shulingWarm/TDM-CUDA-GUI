@@ -29,6 +29,9 @@ public:
 
     TopButtonBar(QWidget* parent=nullptr);
 
+    //把生成正射影像的按钮恢复成可用的状态
+    void restoreGenerationButton();
+
 signals:
     void imageInfoListMessage(QList<ImageInfo> imgInfoList);
     //开始生成正射影像的信号

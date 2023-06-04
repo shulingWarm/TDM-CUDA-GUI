@@ -6,13 +6,21 @@
 
 ## 环境依赖
 
-1. Qt
+#### QT
 
-2. ZeroMq
-   
-   ```shell
-   sudo apt install libzmq3-dev
-   ```
+#### ZeroMq
+
+需要注意zmq需要使用源码编译的方式，这样才能在CMakeLists.txt里面用find_package找到它。
+
+```shell
+git clone https://github.com/zeromq/libzmq.git
+cd libzmq
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+```
 
 ## 编译和运行
 

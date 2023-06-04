@@ -121,6 +121,17 @@ void TopButtonBar::readImgInfoListFromFile(QList<ImageInfo>& infoList,
     fileHandle.close();
 }
 
+//把生成正射影像的按钮恢复成可用的状态
+void TopButtonBar::restoreGenerationButton()
+{
+    //把生成正射影像的按钮改成可用
+    beginButton->setEnabled(true);
+    //重新设置按钮的内容
+    beginButton->setText("生成正射影像");
+    //重新调整按钮的大小
+    setButtonFitSize(beginButton);
+}
+
 //从文本载入相机pose的响应函数
 void TopButtonBar::loadFromTextFile()
 {
@@ -187,7 +198,7 @@ void TopButtonBar::loadPointcloud()
 void TopButtonBar::beginGenerate()
 {
     //把自己的按钮设置成不可使用
-    //beginButton->setEnabled(false);
+    beginButton->setEnabled(false);
     beginButton->setText("正在生成...");
     //重新调整按钮的大小
     setButtonFitSize(beginButton);

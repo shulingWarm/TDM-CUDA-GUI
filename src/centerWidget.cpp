@@ -169,7 +169,8 @@ void receiveResultByBuffer(CenterWidget* widget,//传入这个是为了方便直
     //由于收到的是opencv的图片，所以需要把bgr形式的图片转换成rgb
     bgr2rgb(imgData.data(),imgData.size());
     //使用data数据初始化一个image
-    QImage image(imgData.data(),imgSize[0],imgSize[1],QImage::Format_RGB888);
+    QImage image(imgData.data(),imgSize[0],imgSize[1],
+            imgSize[0]*3,QImage::Format_RGB888);
     //使用image来初始化一个图片
     QPixmap pixelMap=QPixmap::fromImage(image);
     //把图片发出去，通知它正常运行
@@ -259,6 +260,8 @@ void CenterWidget::domResultEvent(QPixmap pixelMap)
     auto imgWindow=new ImageWindow(pixelMap,this);
     //显示图片
     imgWindow->show();
+    //把生成正射影像的按钮恢复成正常可用
+    buttonBar->restoreGenerationButton();
 }
 
 //处理开始生成正射影像的信号
